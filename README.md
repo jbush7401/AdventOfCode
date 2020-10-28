@@ -1,6 +1,6 @@
 # Advent Of Code
 
-These are my solutions Advent of Code challenges. They are completed in c#. When possible I have optomized the solutions to the best of my ability.
+These are my solutions Advent of Code challenges. They are completed in c#. When possible I have optimized the solutions to the best of my ability.
 
 To run a day, run the program and enter a year followed by a space then a day.
 
