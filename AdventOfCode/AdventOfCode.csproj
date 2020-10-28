@@ -34,7 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2018\Day1.cs" />
