@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -71,13 +72,12 @@ namespace AdventOfCode._2018
         {
             int numPlayers = 430;
             Player[] players = new Player[numPlayers];
-            int lastMarble = 71588;
+            int lastMarble = 7158800;
             int currentPlayer = 0;
 
-            List<GameArray> games= new List<GameArray>();
-            games.Add(new GameArray(10000));
-
-            GameArray game = new GameArray(lastMarble);
+            LinkedList<int> game = new LinkedList<int>();
+            game.AddFirst(0);
+            LinkedListNode<int> currentMarblePosition = game.First;
 
             //i is the current marble number
             //currentMarblePosition is the marble that is the current position
@@ -92,13 +92,28 @@ namespace AdventOfCode._2018
 
                 if (i % 23 == 0)
                 {
-                    players[currentPlayer].currentScore += game.ScoreMarble(i);
+                    players[currentPlayer].currentScore += i;
+                    for (int j = 1; j <= 6; j++)
+                    {
+                        if (currentMarblePosition == game.First)
+                            currentMarblePosition = game.Last;
+                        else
+                            currentMarblePosition = currentMarblePosition.Previous;
+                    }
+                    players[currentPlayer].currentScore += currentMarblePosition.Previous.Value;
+                    game.Remove(currentMarblePosition.Previous);
                 }
                 else
                 {
-                    //Place current marble
-                    game.placeMarble(i);
-                    //Go to next Player
+                    if(currentMarblePosition == game.Last)
+                        currentMarblePosition = game.First;
+                    else
+                        currentMarblePosition = currentMarblePosition.Next;
+                    game.AddAfter(currentMarblePosition, i);
+                    if (currentMarblePosition == game.Last)
+                        currentMarblePosition = game.First;
+                    else
+                        currentMarblePosition = currentMarblePosition.Next;
                 }
                 if (currentPlayer == (numPlayers - 1))
                     currentPlayer = 0;
@@ -108,17 +123,11 @@ namespace AdventOfCode._2018
             Console.WriteLine($"Part 2: {players.Max(t => t.currentScore)}");
         }
 
-      
-        class Player
+        //Completely unnecessary class after troubleshooting further.
+        public class GameArray
         {
-            public int playerNumber = 0;
-            public int currentScore = 0;
-        }
-
-        class GameArray
-        {
-            int[] game;
-            int tail = 0;
+            public int[] game;
+            public int tail = 0;
             int currentMarblePosition = 0;
 
             public GameArray(int lastMarble)
@@ -177,6 +186,12 @@ namespace AdventOfCode._2018
                 }
                 tail--;
             }
+        }
+
+        class Player
+        {
+            public int playerNumber = 0;
+            public long currentScore = 0;
         }
     }
 }
