@@ -52,6 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2018\Day1.cs" />
+    <Compile Include="2018\Day10.cs" />
+    <Compile Include="2018\Day11.cs" />
+    <Compile Include="2018\Day12.cs" />
+    <Compile Include="2018\Day13.cs" />
     <Compile Include="2018\Day2.cs" />
     <Compile Include="2018\Day6.cs" />
     <Compile Include="2018\Day7.cs" />
@@ -77,6 +81,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Input\Day10_P1_2018.txt" />
+    <Content Include="Input\Day12_P1_2018.txt" />
     <Content Include="Input\Day1_P1_2018.txt" />
     <Content Include="Input\Day1_P2_2018.txt" />
     <Content Include="Input\Day2_P1_2018.txt" />
