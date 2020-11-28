@@ -83,6 +83,7 @@
   <ItemGroup>
     <Content Include="Input\Day10_P1_2018.txt" />
     <Content Include="Input\Day12_P1_2018.txt" />
+    <Content Include="Input\Day13_P1_2018.txt" />
     <Content Include="Input\Day1_P1_2018.txt" />
     <Content Include="Input\Day1_P2_2018.txt" />
     <Content Include="Input\Day2_P1_2018.txt" />
