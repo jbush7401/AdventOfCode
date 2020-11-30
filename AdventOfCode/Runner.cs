@@ -47,11 +47,6 @@ namespace AdventOfCode
         }
         public void runDayProfiled(string year, string day)
         {
-            Day dayToRun = null;
-            string classToRun = "AdventOfCode._" + year + ".Day" + day;
-            Type type = Type.GetType(classToRun, true);
-            dayToRun = (Day)Activator.CreateInstance(type);
-
             Stopwatch stopWatch = new Stopwatch();
 
             Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(2);
@@ -63,6 +58,10 @@ namespace AdventOfCode
 
             for (int i = 1; i <= 10; i++)
             {
+                Day dayToRun = null;
+                string classToRun = "AdventOfCode._" + year + ".Day" + day;
+                Type type = Type.GetType(classToRun, true);
+                dayToRun = (Day)Activator.CreateInstance(type);
                 stopWatch.Reset();
 
                 stopWatch.Start();
