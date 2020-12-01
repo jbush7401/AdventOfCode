@@ -87,6 +87,7 @@ namespace AdventOfCode
 
             Console.WriteLine("Part 1: " + part1ElapsedTime/10 + " ms");
             Console.WriteLine("Part 2: " + part2ElapsedTime/10 + " ms");
+            Console.WriteLine($"Total: {(part1ElapsedTime / 10) + (part2ElapsedTime / 10)} ms");
             Console.ReadLine();
         }
     }
