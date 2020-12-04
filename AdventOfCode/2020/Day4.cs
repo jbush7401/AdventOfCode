@@ -60,10 +60,12 @@ namespace AdventOfCode._2020
 
         void CheckPassport()
         {
-            if (passport.isValidPart1())
+            if (passport.isValidPart1()) { 
                 totalValidPassportsPart1++;
-            if (passport.isValidPart2())
-                totalValidPassportsPart2++;
+                if (passport.isValidPart2())
+                    totalValidPassportsPart2++;
+            }
+            
             passport = null;
             passport = new PassportCheck();
         }
@@ -108,16 +110,13 @@ namespace AdventOfCode._2020
                 int num;
                 string check;
 
-                if (requiredFields["byr"].value == null || int.Parse(requiredFields["byr"].value) < 1920 || int.Parse(requiredFields["byr"].value) > 2002)
+                if (int.Parse(requiredFields["byr"].value) < 1920 || int.Parse(requiredFields["byr"].value) > 2002)
                     return false;
 
-                if (requiredFields["iyr"].value == null || int.Parse(requiredFields["iyr"].value) < 2010 || int.Parse(requiredFields["iyr"].value) > 2020)
+                if (int.Parse(requiredFields["iyr"].value) < 2010 || int.Parse(requiredFields["iyr"].value) > 2020)
                     return false;
 
-                if (requiredFields["eyr"].value == null || int.Parse(requiredFields["eyr"].value) < 2020 || int.Parse(requiredFields["eyr"].value) > 2030 || requiredFields["eyr"].value.Length != 4)
-                    return false;
-
-                if (requiredFields["hgt"].value == null)
+                if (int.Parse(requiredFields["eyr"].value) < 2020 || int.Parse(requiredFields["eyr"].value) > 2030 || requiredFields["eyr"].value.Length != 4)
                     return false;
 
                 check = requiredFields["hgt"].value.Substring(requiredFields["hgt"].value.Length - 2, 2);
@@ -128,7 +127,7 @@ namespace AdventOfCode._2020
                 if ((check == "cm" && num < 150) || (check == "cm" && num > 193) || (check == "in" && num < 59) || (check == "in" && num > 76))
                     return false;
 
-                if (requiredFields["hcl"].value == null || requiredFields["hcl"].value[0] != '#' || requiredFields["hcl"].value.Length != 7)
+                if (requiredFields["hcl"].value[0] != '#' || requiredFields["hcl"].value.Length != 7)
                     return false;
                 for (int i = 1; i <= 6; i++)
                 {
@@ -139,7 +138,7 @@ namespace AdventOfCode._2020
                 if (!validecl.Contains(requiredFields["ecl"].value))
                     return false;
 
-                if (requiredFields["pid"].value == null || requiredFields["pid"].value.Length != 9 || !int.TryParse(requiredFields["pid"].value, out num))
+                if (requiredFields["pid"].value.Length != 9 || !int.TryParse(requiredFields["pid"].value, out num))
                     return false;
 
                 return true;
