@@ -25,11 +25,16 @@ namespace AdventOfCode
             string[] parts = YearDayToRun.Split(' ');
             string year = parts[0];
             string day = parts[1];
+            string  methodToCall = "";
+            if(parts[2] != null)
+                methodToCall = parts[2];
 
             Runner runner = new Runner();
 
-            if (parts.Length == 3)
+            if (methodToCall == "p")
                 runner.runDayProfiled(year, day);
+            else if (methodToCall == "y")
+                runner.runYearProfiled(year, int.Parse(day));
             else
                 runner.runDay(year, day);
 
