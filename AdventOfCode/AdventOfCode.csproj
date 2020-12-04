@@ -69,6 +69,7 @@
     <Compile Include="2020\Day1.cs" />
     <Compile Include="2020\Day2.cs" />
     <Compile Include="2020\Day3.cs" />
+    <Compile Include="2020\Day4.cs" />
     <Compile Include="Day.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -98,6 +99,7 @@
     <Content Include="Input\Day3_P1_2018.txt" />
     <Content Include="Input\Day3_P1_2020.txt" />
     <Content Include="Input\Day4_P1_2018.txt" />
+    <Content Include="Input\Day4_P1_2020.txt" />
     <Content Include="Input\Day5_P1_2018.txt" />
     <Content Include="Input\Day6_P1_2018.txt" />
     <Content Include="Input\Day7_P1_2018.txt" />
