@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode._2020
 {
@@ -12,7 +10,6 @@ namespace AdventOfCode._2020
         int totalValidPassportsPart2 = 0;
         PassportCheck passport = new PassportCheck();
         
-
         public void part1()
         {
             var lines = Utilities.ReadInput("Day4_P1_2020.txt");
@@ -81,6 +78,7 @@ namespace AdventOfCode._2020
             public string value;
             public bool isValid = false;
         }
+
         public class PassportCheck
         {
             Dictionary<string, Field> requiredFields = new Dictionary<string, Field>() { { "byr", new Field() }, { "iyr", new Field() }, { "eyr", new Field() }, { "hgt", new Field() }, { "hcl", new Field() }, { "ecl", new Field() }, { "pid", new Field() } };
@@ -121,16 +119,13 @@ namespace AdventOfCode._2020
 
                 if (requiredFields["hgt"].value == null)
                     return false;
+
                 check = requiredFields["hgt"].value.Substring(requiredFields["hgt"].value.Length - 2, 2);
-                if ((check == "cm" || check == "in"))
-                {
-                    if (int.TryParse(requiredFields["hgt"].value.Substring(0, requiredFields["hgt"].value.Length - 2), out num)) {
-                        if ((check == "cm" && num < 150) || (check == "cm" && num > 193) || (check == "in" && num < 59) || (check == "in" && num > 76))
-                            return false;
-                    }
-                    else return false;
-                }
-                else
+
+                if (!int.TryParse(requiredFields["hgt"].value.Substring(0, requiredFields["hgt"].value.Length - 2), out num))
+                    return false;
+
+                if ((check == "cm" && num < 150) || (check == "cm" && num > 193) || (check == "in" && num < 59) || (check == "in" && num > 76))
                     return false;
 
                 if (requiredFields["hcl"].value == null || requiredFields["hcl"].value[0] != '#' || requiredFields["hcl"].value.Length != 7)
