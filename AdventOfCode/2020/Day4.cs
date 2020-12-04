@@ -65,9 +65,8 @@ namespace AdventOfCode._2020
                 if (passport.isValidPart2())
                     totalValidPassportsPart2++;
             }
-            
-            passport = null;
-            passport = new PassportCheck();
+
+            passport.Reset();
         }
 
         public void part2()
@@ -84,8 +83,10 @@ namespace AdventOfCode._2020
         public class PassportCheck
         {
             Dictionary<string, Field> requiredFields = new Dictionary<string, Field>() { { "byr", new Field() }, { "iyr", new Field() }, { "eyr", new Field() }, { "hgt", new Field() }, { "hcl", new Field() }, { "ecl", new Field() }, { "pid", new Field() } };
-            string validhcl = "0123456789abcdef";
+            const string validhcl = "0123456789abcdef";
             string[] validecl = new string[7] { "amb", "blu", "brn", "gry", "grn", "hzl", "oth" };
+            int num;
+            string check;
 
             public void addField(string field, string value)
             {
@@ -107,9 +108,6 @@ namespace AdventOfCode._2020
 
             public bool isValidPart2()
             {
-                int num;
-                string check;
-
                 if (int.Parse(requiredFields["byr"].value) < 1920 || int.Parse(requiredFields["byr"].value) > 2002)
                     return false;
 
@@ -142,6 +140,15 @@ namespace AdventOfCode._2020
                     return false;
 
                 return true;
+            }
+
+            public void Reset()
+            {
+                foreach(KeyValuePair<string, Field> kvp in requiredFields)
+                {
+                    kvp.Value.value = "";
+                    kvp.Value.isValid = false;
+                }
             }
         }
     }
