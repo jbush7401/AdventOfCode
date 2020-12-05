@@ -26,7 +26,7 @@ namespace AdventOfCode
             string year = parts[0];
             string day = parts[1];
             string  methodToCall = "";
-            if(parts[2] != null)
+            if(parts.Length > 2)
                 methodToCall = parts[2];
 
             Runner runner = new Runner();
