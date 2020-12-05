@@ -14,10 +14,10 @@ namespace AdventOfCode._2020
             var lines = Utilities.ReadInput("Day5_P1_2020.txt");
 
             int largestSeatId = 0;
-            int row = 0;
+            int row;
             int rowDivider;
             int columnDivider;
-            int column = 0;
+            int column;
             int seatId;
 
             foreach(string line in lines)
@@ -47,7 +47,7 @@ namespace AdventOfCode._2020
                 seatIds.Add(seatId);
 
                 if (seatId > largestSeatId) {
-                    largestSeatId = row * 8 + column;
+                    largestSeatId = seatId;
                 }
             }
             Console.WriteLine($"Part 1: {largestSeatId}");
