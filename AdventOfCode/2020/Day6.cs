@@ -42,9 +42,9 @@ namespace AdventOfCode._2020
 
                 foreach (string person in group.Split(new string[] { "\r\n" },StringSplitOptions.RemoveEmptyEntries))
                 {
-                    foreach(char c in yeses.ToArray())
+                    foreach(char c in yeses.ToList())
                     {
-                        if (!person.Contains(c))
+                        if (person.IndexOf(c) == -1)
                             yeses.Remove(c);
                     }
                 }
