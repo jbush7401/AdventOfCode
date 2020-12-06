@@ -8,7 +8,7 @@ namespace AdventOfCode._2020
     {
         string[] groups;
         int total = 0;
-        HashSet<char> yeses = new HashSet<char>();
+        HashSet<int> yeses = new HashSet<int>();
 
         public void part1()
         {
