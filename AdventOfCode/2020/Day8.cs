@@ -32,52 +32,53 @@ namespace AdventOfCode._2020
 
         public void part2()
         {
+            bool check;
             for(int change = 0; change < commands.Count; change++)
             {
-                index = 0;
-                accumulator = 0;
-                stepNum = 1;
-                infiniteLoop = false;
-
-                foreach(Command c in commands)
-                {
-                    c.step = -1;
-                }
-
-                if(commands[change].direction == Direction.jmp || commands[change].direction == Direction.nop) { 
-                    if (commands[change].direction == Direction.jmp)
-                        commands[change].direction = Direction.nop;
-                    else
-                        commands[change].direction = Direction.jmp;
-                
-
-                    while (!infiniteLoop && index < commands.Count)
-                    {
-                        if (index == commands.Count - 1)
-                        {
-                            ProcessCommand(commands[index]);
-                            Console.WriteLine($"Part 2: {accumulator}");
-                            break;
-                        }
-                        ProcessCommand(commands[index]);
-                       
-                        if (index < commands.Count && commands[index].step > -1)
-                            infiniteLoop = true;
-                    }
-
-
-                    if (commands[change].direction == Direction.jmp)
-                        commands[change].direction = Direction.nop;
-                    else
-                        commands[change].direction = Direction.jmp;
+                check = findInfiniteLoopFix(change);
+                if (check) { 
+                    Console.WriteLine($"Part 2: {accumulator}");
+                    break;
                 }
             }
         }
 
+        bool findInfiniteLoopFix(int change)
+        {
+            index = 0;
+            accumulator = 0;
+            stepNum = 1;
+            infiniteLoop = false;
+
+            foreach (Command c in commands)
+            {
+                c.step = -1;
+            }
+
+            if (commands[change].direction == Direction.jmp || commands[change].direction == Direction.nop)
+            {
+                commands[change].direction = commands[change].direction == Direction.jmp ? Direction.nop : Direction.jmp;
+
+                while (!infiniteLoop && index < commands.Count)
+                {
+                    if (index == commands.Count - 1)
+                    {
+                        ProcessCommand(commands[index]);
+                        return true;
+                    }
+                    ProcessCommand(commands[index]);
+
+                    if (index < commands.Count && commands[index].step > -1)
+                        infiniteLoop = true;
+                }
+
+                commands[change].direction = commands[change].direction == Direction.jmp ? Direction.nop : Direction.jmp;
+            }
+            return false;
+        }
 
         void ProcessCommand(Command command, bool switcheroo = false)
         {
-           
             switch (command.direction)
             {
                 case Direction.acc:
