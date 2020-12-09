@@ -9,9 +9,8 @@ namespace AdventOfCode._2020
         int preambleLength = 25;
 
         List<long> theNumbers = new List<long>();
-        List<long> rangeCheck = new List<long>();
-        long inValidNumberFromPart1;
-        long sum = 0;
+        long inValidNumberFromPart1, sum, min, max = 0;
+        int indexOfInvalid;
 
         public void part1()
         {
@@ -25,6 +24,7 @@ namespace AdventOfCode._2020
                 if(!findMatch(currentNumberCheck))
                 {
                     inValidNumberFromPart1 = theNumbers[currentNumberCheck];
+                    indexOfInvalid = currentNumberCheck;
                     Console.WriteLine($"Part 1: {inValidNumberFromPart1}");
                     break;
                 }    
@@ -33,10 +33,10 @@ namespace AdventOfCode._2020
 
         public void part2()
         {
-            for (int x = 0; x < theNumbers.IndexOf(inValidNumberFromPart1); x++) { 
+            for (int x = 0; x < indexOfInvalid; x++) { 
                 if(findRangeForPart2(x))
                 {
-                    Console.WriteLine($"Part 2 {rangeCheck.Min() + rangeCheck.Max()}");
+                    Console.WriteLine($"Part 2 {min + max}");
                     break;
                 }
             }
@@ -44,13 +44,16 @@ namespace AdventOfCode._2020
 
         bool findRangeForPart2(int indexToStart)
         {
-            rangeCheck.Clear();
             sum = 0;
-
-            while(sum < inValidNumberFromPart1)
+            min = theNumbers[indexToStart];
+            max = theNumbers[indexToStart];
+            while (sum < inValidNumberFromPart1)
             {
-                rangeCheck.Add(theNumbers[indexToStart]);
-                sum = rangeCheck.Sum(t => t);
+                sum += theNumbers[indexToStart];
+                if (theNumbers[indexToStart] < min)
+                    min = theNumbers[indexToStart];
+                if (theNumbers[indexToStart] > max)
+                    max = theNumbers[indexToStart];
                 if (sum == inValidNumberFromPart1)
                     return true;
                 indexToStart++;
