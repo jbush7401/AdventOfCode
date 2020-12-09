@@ -74,6 +74,7 @@
     <Compile Include="2020\Day6.cs" />
     <Compile Include="2020\Day7.cs" />
     <Compile Include="2020\Day8.cs" />
+    <Compile Include="2020\Day9.cs" />
     <Compile Include="Day.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -113,6 +114,7 @@
     <Content Include="Input\Day8_P1_2018.txt" />
     <Content Include="Input\Day8_P1_2020.txt" />
     <Content Include="Input\Day9_P1_2018.txt" />
+    <Content Include="Input\Day9_P1_2020.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
