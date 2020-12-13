@@ -77,7 +77,7 @@ namespace AdventOfCode._2020
                 if (result1 < result2)
                     result1 += additive;
                 else
-                    result2 += num2;
+                    result2 = (result1/num2) * num2 + num2;
             }
             return Tuple.Create(result1, result2);
         }
