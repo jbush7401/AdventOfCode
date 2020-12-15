@@ -106,6 +106,8 @@ namespace AdventOfCode._2020
                 floats.Add(Convert.ToString(i, 2).PadLeft(floatPositions.Count, '0'));
             }
 
+
+            //Get final memory values
             foreach(string f in floats){
                 Memory indexToSet = new Memory();
                 long iToSetCheck = 0;
