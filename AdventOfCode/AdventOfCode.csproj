@@ -75,6 +75,7 @@
     <Compile Include="2020\Day15.cs" />
     <Compile Include="2020\Day16.cs" />
     <Compile Include="2020\Day17.cs" />
+    <Compile Include="2020\Day18.cs" />
     <Compile Include="2020\Day2.cs" />
     <Compile Include="2020\Day3.cs" />
     <Compile Include="2020\Day4.cs" />
@@ -109,6 +110,7 @@
     <Content Include="Input\Day14_P1_2020.txt" />
     <Content Include="Input\Day16_P1_2020.txt" />
     <Content Include="Input\Day17_P1_2020.txt" />
+    <Content Include="Input\Day18_P1_2020.txt" />
     <Content Include="Input\Day1_P1_2018.txt" />
     <Content Include="Input\Day1_P1_2020.txt" />
     <Content Include="Input\Day1_P2_2018.txt" />
